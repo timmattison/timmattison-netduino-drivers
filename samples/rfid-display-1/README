@@ -1,0 +1,17 @@
+If you want to run this sample without any modifications you'll need the
+following:
+
+- A Netduino (I have tested this on the Netduino Plus)
+- A Sparkfun serial LCD (SKU LCD-00709 or comparable)
+- A Parallax RFID reader (Parallax item code 28140)
+
+Now wire up the data path:
+  - The RFID reader's SOUT line connects to the Netduino's D0
+  - The serial LCD's yellow wire connects to the Netduino's D3
+  - The RFID reader's /ENABLE line connects to the Netduino's D4
+
+It is up to you to wire the power for this circuit properly.  If you don't
+feel comforable doing this then you should ask someone!
+
+After that you can load this project in Visual Studio and deploy it to your
+device.  Good luck!
