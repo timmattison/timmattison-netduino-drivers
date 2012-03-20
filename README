@@ -1,0 +1,11 @@
+This project contains drivers for various hardware components that I've used.
+It also contains some sample code to make use of the drivers
+
+The supported devices are:
+  - drivers/rfid-reader-parallax-28140   - Parallax RS-232 RFID reader (Parallax item code 28140)
+  - drivers/character-lcd-sparkfun-00709 - Sparkfun's 16x2 LCD which also works with 1, 2, 3, and
+      4 line displays in either 16 or 20 character widths (Sparkfun SKU LCD-00709)
+
+The sample projects are:
+  - samples/rfid-display-1 - Uses rfid-reader-parallax-28140 and character-lcd-sparkfun-00709 to
+      display RFID tag ID's on a character based LCD as they are scanned
