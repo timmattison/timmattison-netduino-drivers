@@ -8,4 +8,5 @@ The supported devices are:
 
 The sample projects are:
   - samples/rfid-display-1 - Uses rfid-reader-parallax-28140 and character-lcd-sparkfun-00709 to
-      display RFID tag ID's on a character based LCD as they are scanned
+      display RFID tag ID's on a character based LCD as they are scanned.  A video of this project
+      in action is here: http://youtu.be/7h-9A0ChoNU

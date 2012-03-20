@@ -62,6 +62,9 @@ namespace TimMattison
         // The serial port that we're using for this device
         SerialPort serial;
 
+        // The enable pin that we're using for this device
+        OutputPort enablePinPort;
+
         // Create an array for a current byte so we don't have to keep converting from byte to array and back again
         byte[] currentByte = new byte[1];
 
@@ -150,13 +153,13 @@ namespace TimMattison
             serial.DataReceived += new SerialDataReceivedEventHandler(serial_DataReceived);
 
             // Set up the enable pin, set it to off since the device is low active
-            OutputPort enablePinPort = new OutputPort(enablePin, false);
+            enablePinPort = new OutputPort(enablePin, false);
         }
 
         void serial_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             // Are there any bytes to read?
-            if (serial.BytesToRead > 0)
+            while (serial.BytesToRead > 0)
             {
                 // Yes, read in one byte
                 serial.Read(currentByte, 0, 1);
@@ -229,13 +232,6 @@ namespace TimMattison
                         // This should never happen
                         throw new NotSupportedException("Reader is in an invalid state");
                 }
-            }
-            else
-            {
-                // No date, do nothing
-
-                // Sleep for a bit so we don't just spin and waste energy
-                Thread.Sleep(500);
             }
         }
     
