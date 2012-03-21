@@ -1,0 +1,31 @@
+NOTE: This driver is for C328/OV764x with OV528 chips only!  The C329 cameras
+        are (supposedly) completely different and are definitely untested.  Do
+        not try to use this library with anything but a C328/OV328 camera.  The
+        model that I used was Sparkfun's JPEG color camera - UART interface
+        (SEN-09334).
+
+This driver is for cameras using the OV328 chip.  This chip isn't known for its
+reliability, actually quite the opposite, but it is definitely an inexpensive
+option if you're looking to play around with an RS-232 camera that spits out
+JPEGs.
+
+Despite its shortcomings its actually a decent platform to start learning about
+serial protocols.  The protocol is fairly simple but includes enough behind the
+scenes work for the programmer to make it interesting without becoming onerous.
+
+To be perfectly honest here are the list of shortcomings that I know of:
+  - Sometimes the camera will fail to initialize or "sync"
+  - Sometimes the camera will stop sending data in the middle of a picture
+  - Sometimes either of the previous two situations can only be remedied by
+      power cycling the camera
+
+These flaws have been corroborated by a few other places on the Internet so I
+know that it's not just me.  Some places that mention this chip and its quirks
+are:
+  - DIY Drones - "Secrets of the C328" - http://diydrones.com/profiles/blogs/secrets-of-the-c328
+  - Hag's House - "C328 Serial Camera" - http://www.hagshouse.com/forums/index.php?showtopic=38355
+
+This library was implemented in a 100% clean room environment.  All the code
+was developed and tested by me as I only recently found these pages where
+others had written their own libraries and it turns out that a lot of the links
+are now dead.
