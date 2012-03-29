@@ -5,8 +5,17 @@ The supported devices are:
   - drivers/rfid-reader-parallax-28140   - Parallax RS-232 RFID reader (Parallax item code 28140)
   - drivers/character-lcd-sparkfun-00709 - Sparkfun's 16x2 LCD which also works with 1, 2, 3, and
       4 line displays in either 16 or 20 character widths (Sparkfun SKU LCD-00709)
+  - drivers/chainable-rgbled-grove - Grove's chainable RGB LED.  This supports chaining as many
+      RGB LEDs together as you'd like and uses their own protocol to pass data from one device to
+      another.  A good piece of hardware to pick up if you just want to play around with LEDs.
+      (Seeed SKU COM53140P)
 
 The sample projects are:
   - samples/rfid-display-1 - Uses rfid-reader-parallax-28140 and character-lcd-sparkfun-00709 to
       display RFID tag ID's on a character based LCD as they are scanned.  A video of this project
       in action is here: http://youtu.be/7h-9A0ChoNU
+  - samples/triple-rgb-led-1 - Uses three Grove chainable RGB LEDs and flashes random colors.  A
+      video of this project in action is here: http://youtu.be/cOlJoXWr_qQ
+  - samples/triple-rgb-led-2 - Uses three Grove chainable RGB LEDs and cycles the first from off
+      to solid red, the second from off to solid green, the third from off to solid blue, and then
+      repeats.  A video of this project in action is here: http://youtu.be/b5X3mvLbBf8
