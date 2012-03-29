@@ -47,7 +47,7 @@ namespace triple_rgb_led_2
                 if (whichLed == 0)
                 {
                     // Make the first LED red and turn off the second and third
-                    first.red = counter & 0xFF;
+                    first.red = (byte) (counter & 0xFF);
                     second.green = 0;
                     third.blue = 0;
                 }
@@ -55,7 +55,7 @@ namespace triple_rgb_led_2
                 {
                     // Make the second LED green and turn off the first and third
                     first.red = 0;
-                    second.green = counter & 0xFF;
+                    second.green = (byte) (counter & 0xFF);
                     third.blue = 0;
                 }
                 else if (whichLed == 2)
@@ -63,7 +63,7 @@ namespace triple_rgb_led_2
                     // Make the third LED blue and turn off the first and second
                     first.red = 0;
                     second.green = 0;
-                    third.blue = counter & 0xFF;
+                    third.blue = (byte) (counter & 0xFF);
                 }
 
                 // Make sure the counter rolls properly after it runs through all three LEDs (256 * 3)

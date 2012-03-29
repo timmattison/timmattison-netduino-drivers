@@ -43,7 +43,7 @@ namespace chainable_rgbled_grove
             setColor(rgb.red, rgb.green, rgb.blue, first, last);
         }
 
-        private void setColor(int red, int green, int blue, bool first, bool last)
+        private void setColor(byte red, byte green, byte blue, bool first, bool last)
         {
             // Is this the first color?
             if (first)
@@ -74,7 +74,7 @@ namespace chainable_rgbled_grove
             }
         }
 
-        private void sendBit(Boolean bit)
+        private void sendBit(bool bit)
         {
             // Get DIN into the proper state
             din.Write(bit);
@@ -86,7 +86,7 @@ namespace chainable_rgbled_grove
             cin.Write(false);
         }
 
-        private void sendByte(Byte data)
+        private void sendByte(byte data)
         {
             // Send the bits MSB first
             sendBit((data & 0x80) == 0x80);
@@ -121,7 +121,7 @@ namespace chainable_rgbled_grove
             sendBit(true);
         }
 
-        private void sendColorData(int red, int green, int blue)
+        private void sendColorData(byte red, byte green, byte blue)
         {
             // Send the inverse bits of the B7, B6, G7, G6, R7, R6
             sendBit((blue & 0x80) != 0x80);

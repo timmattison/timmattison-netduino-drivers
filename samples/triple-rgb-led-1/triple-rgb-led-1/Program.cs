@@ -13,7 +13,7 @@ namespace triple_rgb_led_1
     public class Program
     {
         // A list of prime numbers that we use to XOR into our color values.  This was done to try to make the colors look random.
-        private static int[] increments = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251 };
+        private static byte[] increments = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251 };
 
         // A counter that makes sure each time we XOR we're using a different number from the prime number list
         private static int counter = 1;
@@ -57,21 +57,21 @@ namespace triple_rgb_led_1
                 counter = counter % increments.Length;
 
                 // XOR a new prime with the red value
-                color.red = color.red ^ increments[counter];
+                color.red = (byte) (color.red ^ increments[counter]);
 
                 // Increment the counter to get the next number and keep it within the bounds of the table
                 counter++;
                 counter = counter % increments.Length;
 
                 // XOR a new prime with the green value
-                color.green = color.green ^ increments[counter];
+                color.green = (byte) (color.green ^ increments[counter]);
 
                 // Increment the counter to get the next number and keep it within the bounds of the table
                 counter++;
                 counter = counter % increments.Length;
 
                 // XOR a new prime with the blue value
-                color.blue = color.blue ^ increments[counter];
+                color.blue = (byte) (color.blue ^ increments[counter]);
             } while ((color.red == 0) && (color.green == 0) && (color.blue == 0));
             // Repeat this loop if all of the colors end up being zero (avoids a strobing effect)
         }
