@@ -38,21 +38,21 @@ namespace TimMattison
 
         public bool joystickButtonState { get { return getState(joystickButtonPort, internalJoystickButtonState); } }
 
-        private int internalVerticalPosition;
+        private AnalogInput verticalPositionInput;
 
         /// <summary>
-        /// Returns a value between 0 and 100 indicating where the joystick is positioned in the vertical direction
+        /// Returns a value between -100 and 100 indicating where the joystick is positioned in the vertical direction
         /// </summary>
         /// <returns></returns>
-        int verticalPosition { get { return internalVerticalPosition; } }
+        public float verticalPosition { get { return getCoordinate(verticalPositionInput.Read()); } }
 
-        private int internalHorizontalPosition;
+        private AnalogInput horizontalPositionInput;
 
         /// <summary>
-        /// Returns a value between 0 and 100 indicating where the joystick is positioned in the horizontal direction
+        /// Returns a value between -100 and 100 indicating where the joystick is positioned in the horizontal direction
         /// </summary>
         /// <returns></returns>
-        int horizontalPosition { get { return internalHorizontalPosition; } }
+        public float horizontalPosition { get { return getCoordinate(horizontalPositionInput.Read()); } }
 
         public Joystick(bool useInterrupts)
         {
@@ -88,6 +88,10 @@ namespace TimMattison
                 // No, mark that we are not using interrupts.  We will always read the buttons when their states are requested.
                 internalInterruptMode = false;
             }
+
+            // Set up the analog ports
+            verticalPositionInput = new AnalogInput(Pins.GPIO_PIN_A0);
+            horizontalPositionInput = new AnalogInput(Pins.GPIO_PIN_A1);
         }
 
         private bool convertStateToButton(bool state)
@@ -148,6 +152,12 @@ namespace TimMattison
                 // No, read the port
                 return port.Read();
             }
+        }
+
+        private float getCoordinate(int analogValue)
+        {
+            //return (float)(analogValue - 512) / (float) 512 * (float) 100;
+            return (float)analogValue;
         }
     }
 }
